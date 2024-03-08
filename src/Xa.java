@@ -27,7 +27,7 @@ public class Xa extends Fitxa {
 
     @Override
     public String toString() {
-        if (this.getColor() == Color.WHITE) {
+        if (this.getColor() == Color.BLANCO) {
             return "X";
         }
         return "x";
@@ -47,7 +47,7 @@ public class Xa extends Fitxa {
             return -1;
         }
 
-        if (this.getColor() == Color.WHITE) {
+        if (this.getColor() == Color.BLANCO) {
 
             if (side.equals("K")) {
                 // no pot creuar una línia de control
@@ -75,7 +75,7 @@ public class Xa extends Fitxa {
             }
         }
 
-        if (this.getColor() == Color.BLACK) {
+        if (this.getColor() == Color.NEGRO) {
             if (side.equals("K")) {
                 if (this.move(5, 0, null) == 0 && this.move(6, 0, null) == 0) {
                     Tauler.setFitxa(ruhk.getX(), ruhk.getY(), null);
@@ -126,6 +126,5 @@ public class Xa extends Fitxa {
 
         return false;
     }
-
 
 }

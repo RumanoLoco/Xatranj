@@ -4,7 +4,6 @@ public class Ministre extends Fitxa {
         super(color, ID, startX, startY);
     }
 
-
     @Override
     public boolean possibleMov(int x, int y) {
         // Verificar si la casilla está ocupada por una ficha del mismo color
@@ -18,11 +17,9 @@ public class Ministre extends Fitxa {
         return deltaX == 1 && deltaY == 1 && deltaX == deltaY;
     }
 
-
-
     @Override
     public String toString() {
-        if (this.getColor() == Color.WHITE) {
+        if (this.getColor() == Color.BLANCO) {
             return "M";
         }
         return "m";

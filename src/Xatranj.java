@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Xatranj {
     public static void main(String[] args) {
-        Scanner moveChoice = new Scanner(System.in);
+        Scanner movimiento = new Scanner(System.in);
 
         while (true) {
             Tauler.startGame();
@@ -14,9 +14,10 @@ public class Xatranj {
                 Tauler.printTauler();
                 // comprovar escac
                 if (turns % 2 == 0) {
-                    color = Color.WHITE;
-                } else
-                    color = Color.BLACK;
+                    color = Color.BLANCO;
+                } else {
+                    color = Color.NEGRO;
+                }
 
                 if (Tauler.staleMate(color) == true) {
                     System.out.println("final del joc, empat");
@@ -25,16 +26,16 @@ public class Xatranj {
                 if (Tauler.checkForCheck(color) == true) {
                     if (Tauler.mate(color) == true) {
 
-                        System.out.printf("Escac i mat, guanya %s \n", color == Color.WHITE ? "Negre" : "Blanc");
+                        System.out.printf("Escac i mat, guanya %s \n", color == Color.BLANCO ? "Negre" : "Blanc");
                         break;
                     }
-                    System.out.printf("%s està en Escac! \n", color == Color.WHITE ? "Blanc" : "Negre");
+                    System.out.printf("%s està en Escac! \n", color == Color.BLANCO ? "Blanc" : "Negre");
                 }
 
                 // elecció del moviment
-                System.out.printf("Torn de %s \n", color == Color.WHITE ? "Blanc" : "Negre");
+                System.out.printf("Torn de %s \n", color == Color.BLANCO ? "Blanc" : "Negre");
 
-                String move = moveChoice.nextLine();
+                String move = movimiento.nextLine();
                 // processar moviment
                 if (Tauler.processMove(move, color) == 0) {
                     turns++;
@@ -44,7 +45,7 @@ public class Xatranj {
 
             }
             System.out.println("Vols jugar de nou? s/n");
-            if (moveChoice.next().equals("s")) {
+            if (movimiento.next().equals("s")) {
                 continue;
             } else
                 System.exit(0);

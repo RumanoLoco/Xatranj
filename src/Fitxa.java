@@ -1,9 +1,9 @@
 
 public abstract class Fitxa {
 
-    private final Color color;
+    protected Color color;
 
-    private final String ID;
+    private String ID;
 
     private int x, y;
 
@@ -15,11 +15,12 @@ public abstract class Fitxa {
         this.x = startX;
         this.y = startY;
 
-        if (this.getColor() == Color.WHITE) {
-            Tauler.white.add(this);
-        } else if (this.getColor() == Color.BLACK) {
-            Tauler.black.add(this);
+        if (Color.esBlanco(this.getColor())) {
+            Tauler.blanco.add(this);
+        } else if (Color.esNegro(this.getColor())) {
+            Tauler.negro.add(this);
         }
+
         Tauler.setFitxa(x, y, this);
     }
 
@@ -69,10 +70,10 @@ public abstract class Fitxa {
         int origenX = this.getX();
         int origenY = this.getY();
 
-        if (this.getColor() == Color.WHITE) {
-            Tauler.black.remove(otro);
+        if (Color.esBlanco(this.getColor())) {
+            Tauler.negro.remove(otro);
         } else {
-            Tauler.white.remove(otro);
+            Tauler.blanco.remove(otro);
         }
 
         Tauler.setFitxa(origenX, origenY, null);
@@ -83,10 +84,10 @@ public abstract class Fitxa {
 
         if (Tauler.checkForCheck(color) == true) {
             if (otro != null) {
-                if (this.getColor() == Color.WHITE) {
-                    Tauler.black.add(otro);
+                if (Color.esBlanco(this.getColor())) {
+                    Tauler.negro.add(otro);
                 } else {
-                    Tauler.white.add(otro);
+                    Tauler.blanco.add(otro);
                 }
             }
             Tauler.setFitxa(origenX, origenY, this);
@@ -98,15 +99,15 @@ public abstract class Fitxa {
 
         if (this instanceof Baidaq) {
             char file = this.getID().charAt(4);
-            if (this.getColor() == Color.WHITE && y == 0) {
+            if (Color.esBlanco(this.getColor()) && y == 0) {
                 Tauler.setFitxa(x, y, null);
-                Tauler.white.remove(this);
-                Ministre yasMinistre = new Ministre(Color.WHITE, "ministre" + file, x, y);
+                Tauler.blanco.remove(this);
+                Ministre yasMinistre = new Ministre(Color.BLANCO, "ministre" + file, x, y);
                 System.out.println("Baidaq muerto!");
-            } else if (this.getColor() == Color.BLACK && y == 7) {
+            } else if (this.getColor() == Color.NEGRO && y == 7) {
                 Tauler.setFitxa(x, y, null);
-                Tauler.black.remove(this);
-                Ministre yasMinistre = new Ministre(Color.BLACK, "ministre" + file, x, y);
+                Tauler.negro.remove(this);
+                Ministre yasMinistre = new Ministre(Color.NEGRO, "ministre" + file, x, y);
                 System.out.println("Baidaq muerto!");
             }
         }
@@ -129,10 +130,10 @@ public abstract class Fitxa {
                 Tauler.setFitxa(origenX, origenY, this);
                 esPrimerMov = isFirst;
                 if (otro != null) {
-                    if (otro.getColor() == Color.WHITE) {
-                        Tauler.white.add(otro);
+                    if (Color.esBlanco(this.getColor())) {
+                        Tauler.blanco.add(otro);
                     } else
-                        Tauler.black.add(otro);
+                        Tauler.negro.add(otro);
                 }
                 return true;
             }

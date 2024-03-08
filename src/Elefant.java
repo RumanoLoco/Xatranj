@@ -22,11 +22,9 @@ public class Elefant extends Fitxa {
         return false;
     }
 
-
-
     @Override
     public String toString() {
-        if (this.getColor() == Color.WHITE) {
+        if (this.getColor() == Color.BLANCO) {
             return "E";
         }
         return "e";
@@ -37,17 +35,17 @@ public class Elefant extends Fitxa {
         int x = getX();
         int y = getY();
 
-        // Verificar movimientos en diagonal de dos en dos casillas en las cuatro direcciones posibles
+        // Verificar movimientos en diagonal de dos en dos casillas en las cuatro
+        // direcciones posibles
         return (movimientoValido(x - 2, y - 2) || // arriba izquierda
                 movimientoValido(x - 2, y + 2) || // arriba derecha
                 movimientoValido(x + 2, y - 2) || // abajo izquierda
-                movimientoValido(x + 2, y + 2));  // abajo derecha
+                movimientoValido(x + 2, y + 2)); // abajo derecha
     }
 
     // Método para verificar si un movimiento es válido (sin salirse del tablero)
     private boolean movimientoValido(int x, int y) {
         return (x >= 0 && x < 8 && y >= 0 && y < 8);
     }
-
 
 }

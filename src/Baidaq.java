@@ -10,7 +10,7 @@ public class Baidaq extends Fitxa {
     @Override
     public boolean possibleMov(int x, int y) {
 
-        if (this.getColor() == Color.WHITE) {
+        if (Color.esBlanco(this.color)) {
 
             // 2 espacios delante
             if (this.esPrimerMov == true && this.getY() - y == 2 && this.getX() - x == 0
@@ -29,7 +29,7 @@ public class Baidaq extends Fitxa {
             }
         }
 
-        if (this.getColor() == Color.BLACK) {
+        if (Color.esNegro(this.color)) {
             // 2 espacios delante
             if (this.esPrimerMov == true && this.getY() - y == -2 && this.getX() - x == 0
                     && Tauler.camiLliure(getX(), getY(), x, y) && Tauler.getFitxa(x, y) == null) {
@@ -51,10 +51,10 @@ public class Baidaq extends Fitxa {
 
     @Override
     public String toString() {
-        if (this.getColor() == Color.WHITE) {
-            return "B";
+        if (Color.esBlanco(this.color)) {
+            return "B"; // Representación para una pieza blanca
         }
-        return "b";
+        return "b"; // Representación para una pieza negra
     }
 
     @Override
@@ -62,7 +62,7 @@ public class Baidaq extends Fitxa {
         int x = this.getX();
         int y = this.getY();
 
-        if (this.getColor() == Color.WHITE) {
+        if (Color.esBlanco(this.color)) {
 
             if (this.testMov(x, y - 1)) {
                 return true;
@@ -81,7 +81,7 @@ public class Baidaq extends Fitxa {
             }
 
         }
-        if (this.getColor() == Color.BLACK) {
+        if (Color.esNegro(this.color)) {
 
             if (this.testMov(x, y + 1)) {
                 return true;

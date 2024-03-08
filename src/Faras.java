@@ -22,7 +22,7 @@ public class Faras extends Fitxa {
 
     @Override
     public String toString() {
-        if (this.getColor() == Color.WHITE) {
+        if (this.getColor() == Color.BLANCO) {
             return "F";
         }
         return "f";
@@ -31,10 +31,10 @@ public class Faras extends Fitxa {
     @Override
     public boolean potMov() {
         int[][] movimientos = {
-                {-2, -1}, {-1, -2}, // arriba izquierda
-                {2, -1}, {1, -2},   // arriba derecha
-                {-2, 1}, {-1, 2},   // abajo izquierda
-                {2, 1}, {1, 2}      // abajo derecha
+                { -2, -1 }, { -1, -2 }, // arriba izquierda
+                { 2, -1 }, { 1, -2 }, // arriba derecha
+                { -2, 1 }, { -1, 2 }, // abajo izquierda
+                { 2, 1 }, { 1, 2 } // abajo derecha
         };
 
         int x = this.getX();

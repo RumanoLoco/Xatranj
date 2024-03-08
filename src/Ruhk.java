@@ -7,7 +7,6 @@ public class Ruhk extends Fitxa {
 
     boolean esPrimerMov = true;
 
-
     @Override
     public boolean possibleMov(int x, int y) {
         // no se puede matar a si mismo
@@ -27,7 +26,7 @@ public class Ruhk extends Fitxa {
 
     @Override
     public String toString() {
-        if (this.getColor() == Color.WHITE) {
+        if (this.getColor() == Color.BLANCO) {
             return "R";
         }
         return "r";
@@ -71,6 +70,5 @@ public class Ruhk extends Fitxa {
 
         return false;
     }
-
 
 }
